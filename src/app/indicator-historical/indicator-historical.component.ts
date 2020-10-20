@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import * as moment from 'moment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-indicator-historical',
@@ -18,6 +19,13 @@ export class IndicatorHistoricalComponent implements OnInit {
   public labels:string[] = [];  
   public lineChartOptions: ChartOptions = {
     responsive: true,
+      legend: {
+        display: true,
+        labels: {
+          fontColor: 'white',
+          fontSize: 18
+        }
+      },
       scales:{
         xAxes: [{
           ticks: {
@@ -48,7 +56,7 @@ export class IndicatorHistoricalComponent implements OnInit {
   public lineChartType: ChartType = 'line';
   public lineChartPlugins = [];
   
-  constructor(public indicatorsService: IndicatorsService, private activeRoute: ActivatedRoute) { }
+  constructor(public indicatorsService: IndicatorsService, private activeRoute: ActivatedRoute, private _location: Location) { }
 
   ngOnInit() {
     this.getdata();
@@ -85,7 +93,7 @@ export class IndicatorHistoricalComponent implements OnInit {
     this.lineChartLabels = this.labels;    
   }
 
-
-
-
+  goBack() {
+    this._location.back();
+  }
 }

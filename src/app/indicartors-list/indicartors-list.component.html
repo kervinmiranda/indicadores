@@ -3,7 +3,7 @@
 <div class="card-container">
     <!-- Directiva Estructural  -->
     <div *ngFor="let item of indicatorsService.values; index as i" class="card card-box" title="{{item.codigo}}">
-        <a href="/indicator-historical/{{item.codigo}}">
+        <a routerLink="/indicator-historical/{{item.codigo}}">
             <h4 class="mt-0 mb-3">{{ item.nombre }}</h4>
             <div class="widget-box-2">
                 <div class="widget-detail-2">

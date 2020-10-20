@@ -17,7 +17,8 @@ export class IndicatorsService {
   getValues () {
     const url = environment.idicatorsUrl.endpoint;
     this.http.get<any>(url).subscribe(
-      data => {
+      (data) => {
+      this.values = [];
       this.names.forEach(name=> {
         const datos:Values = data[name];
         this.values.push(datos);
