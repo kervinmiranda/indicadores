@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IndicatorsService } from '../services/indicators.service';
 import { registerLocaleData } from '@angular/common';
-import es from '@angular/common/locales/es';
+import es from '@angular/common/locales/es-CL';
 
 @Component({
   selector: 'app-indicartors-list',
