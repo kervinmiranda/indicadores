@@ -16,13 +16,13 @@ export class IndicatorHistoricalComponent implements OnInit {
   public lineChartData: ChartDataSets[];
   public lineChartLabels: Label[];
   public values:number[] = [];
+  public indicatorName: string;
   public labels:string[] = [];  
   public lineChartOptions: ChartOptions = {
     responsive: true,
       legend: {
         display: true,
         labels: {
-          fontColor: 'white',
           fontSize: 18
         }
       },
@@ -67,6 +67,7 @@ export class IndicatorHistoricalComponent implements OnInit {
   private getdata(){    
     this.indicatorsService.getIndicatorHistorical(this.activeRoute.snapshot.params.key).subscribe(
       data => {
+        this.indicatorName = data.nombre;
         data.serie.reverse().forEach(item => {
           this.labels.push(moment.utc(item.fecha).local().format("DD/MM/YYYY"));
           this.values.push(item.valor);
@@ -87,7 +88,7 @@ export class IndicatorHistoricalComponent implements OnInit {
     this.lineChartData = [
       { 
         data: this.values,
-        label: this.activeRoute.snapshot.params.key
+        label: this.indicatorName
       },
     ],
     this.lineChartLabels = this.labels;    
